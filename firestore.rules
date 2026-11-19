@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// Atividade sem login: Create e Read liberados para todos nas duas coleções.
+// Depois de colar no Firebase Console (Firestore → Regras), clique em PUBLICAR (Deploy),
+// senão o botão Salvar fica em "loading infinito".
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /itens/{id} {
+      allow read, create: if true;
+    }
+    match /pessoas/{id} {
+      allow read, create: if true;
+    }
+  }
+}
